@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         redirect_to @user, notice: "Usuário foi criado com sucesso!"
-        #Usuário depois de cadastrar-se acessa o sistema automaticamente
+        #Usuário depois de cadastrado acessa o sistema automaticamente
 			  sign_in(@user)
       else 
 				render action: :new
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-              params.require(:user).permit(:name, :email, :password, :password_confirmation)
+              params.require(:user).permit(:name, :email, :password, :password_confirmation, :store_name)
     end
 
   end

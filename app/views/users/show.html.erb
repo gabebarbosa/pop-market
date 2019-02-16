@@ -2,6 +2,7 @@
 <body>
 	<h3> Perfil de <%= @user.name %> </h3>
 	<%= @user.email %>
+	<%= @user.store_name %>
 	<% if current_user == @user %>
 	<%= link_to "Editar", edit_user_path(current_user) %>
 	<%end%>

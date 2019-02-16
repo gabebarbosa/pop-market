@@ -3,6 +3,7 @@
   <thead>
        <tr>
          <th>Nome</th>
+         <th>Loja</th>
          <th>Email</th>
          <th></th>
        </tr>
@@ -11,6 +12,7 @@
        <% @users.each do |user| %>
          <tr>
            <td><%= user.name %></td>
+           <td><%= user.store_name %></td>
            <td><%= user.email %></td>
            <td><%= link_to "Ver", user %></td>
          </tr>
