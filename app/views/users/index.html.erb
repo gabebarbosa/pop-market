@@ -1,0 +1,19 @@
+<h3> Usuários </h3>
+<table class="table table-bordered">
+  <thead>
+       <tr>
+         <th>Nome</th>
+         <th>Email</th>
+         <th></th>
+       </tr>
+  </thead>
+  <tbody>
+       <% @users.each do |user| %>
+         <tr>
+           <td><%= user.name %></td>
+           <td><%= user.email %></td>
+           <td><%= link_to "Ver", user %></td>
+         </tr>
+      <%end%>
+  </tbody>
+ </table>

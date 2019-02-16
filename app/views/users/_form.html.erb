@@ -1,0 +1,31 @@
+<%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+    <div id="error_explanation", class="alert alert-danger">
+
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+<% end %>
+<div class="form-group">
+  <%= f.label :nome %>
+  <%= f.text_field :name, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :email %>
+  <%= f.email_field :email, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :senha %>
+  <%= f.password_field :password, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label 'Confirmar Senha' %>
+  <%= f.password_field :password_confirmation, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.submit "Salvar", class: "btn btn-default btn-xs" %>
+</div>
+<% end %>

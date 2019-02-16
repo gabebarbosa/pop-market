@@ -1,0 +1,9 @@
+<html>
+<body>
+	<h3> Perfil de <%= @user.name %> </h3>
+	<%= @user.email %>
+	<% if current_user == @user %>
+	<%= link_to "Editar", edit_user_path(current_user) %>
+	<%end%>
+</body>
+  </html>
