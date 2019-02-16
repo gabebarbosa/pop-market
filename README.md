@@ -12,3 +12,14 @@ Com este projeto pretendo ajudar vendedores "populares" que não possuem um sist
 rake db:create
 rake db:migrate
 
+**Instalando**
+
+`git clone github.com/gabebarbosa/pop-market.git`
+
+`cd pop-market`
+
+`bundle install`
+
+`rake db:create`
+
+`rake db:migrate`
