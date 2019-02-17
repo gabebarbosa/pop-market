@@ -27,6 +27,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><i class="fa fa-suitcase label-tema" aria-hidden="true"></i> <%= product.name %></td>
+        <td align="right"><i class="label-tema" aria-hidden="true"></i> R$  <%= product.price %></td>
         <td align="right"><i class="label-tema" aria-hidden="true"></i> <%= product.amount %> disponíveis</td>
         <td align="right">
           <%= link_to 'Editar', edit_product_path(product), class: " fa fa-pencil-square-o btn btn-default btn-xs" %>

@@ -26,6 +26,8 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+
+    @product.price = @product.price == nil ? 0 : @product.price 
     unless current_user.id == @product.user_id
       redirect_to products_path
     end
@@ -37,6 +39,9 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     @product.user_id = current_user.id
+    @product.amount = 0
+
+    @product.price = @product.price == nil ? 0 : @product.price
 
     respond_to do |format|
       if @product.save
@@ -85,6 +90,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :amount, :user_id)
+      params.require(:product).permit(:name, :description, :amount, :user_id, :price)
     end
 end
