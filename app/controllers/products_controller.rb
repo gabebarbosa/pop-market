@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.where(user_id: current_user.id)
+    @name_search = params[:name]
+    @products = Product.where(user_id: current_user.id).where("name ilike ?", "%#{@name_search}%")
   end
 
   # GET /products/1

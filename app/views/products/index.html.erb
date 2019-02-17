@@ -1,33 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-9">
+        <% button_to "Novo produto", new_product_path, :method => "get", class: "btn btn-default btn-xs" %>
+        <% link_to 'Novo produto', new_product_path %>
+        <%= link_to " Novo produto", new_product_path, :method => "get", class: " fa fa-plus-circle btn btn-default btn-xs"%> 
+      </div>
+      <div align="right" class="col-md-3">
+        <%= form_tag products_path, method: :get do  %>
+          <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3"><i class="fa fa-search label-tema" aria-hidden="true"></i></span>
+              <%= text_field_tag :name, @name_search, class: "form-control", placeholder: "buscar produtos ... " %>
+              <% button_to "Buscar", nil, class: "fa fa-search btn btn-defaut btn-xs" %>
+          </div>   
+        <% end %>
+      </div>
+    </div>  
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Amount</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
+<table class="table table-condensed table-hover">
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.amount %></td>
-        <td><%= product.user.name %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><i class="fa fa-suitcase label-tema" aria-hidden="true"></i> <%= product.name %></td>
+        <td align="right"><i class="label-tema" aria-hidden="true"></i> <%= product.amount %> disponíveis</td>
+        <td align="right">
+          <%= link_to 'Editar', edit_product_path(product), class: " fa fa-pencil-square-o btn btn-default btn-xs" %>
+          <% link_to 'ver', product %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
