@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authorize, except: [:new, :create]
-	before_action :correct_user?, only: [:edit, :update, :destroy]
+	before_action :correct_user?, only: [:edit, :update, :destroy, :show]
 
     def new
       @user = User.new
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
 
     def index
-      @users = User.all
+      @users = User.where(id: current_user.id)
     end
 
     def show
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-              params.require(:user).permit(:name, :email, :password, :password_confirmation, :store_name)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :store_name)
     end
 
   end
