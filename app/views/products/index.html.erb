@@ -30,7 +30,7 @@
         <td align="right"><i class="label-tema" aria-hidden="true"></i> <%= product.amount %> disponíveis</td>
         <td align="right">
           <%= link_to 'Editar', edit_product_path(product), class: " fa fa-pencil-square-o btn btn-default btn-xs" %>
-          <% link_to 'ver', product %>
+          <%= link_to 'Ver', product, class: " fa fa-eye btn btn-default btn-xs" %>
         </td>
       </tr>
     <% end %>
