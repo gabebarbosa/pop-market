@@ -6,7 +6,7 @@
      <% end %>
     <%= menu_group pull: :right  do %>
         <% if logged_in? %>
-          <%= menu_item " "+current_user.email, edit_user_path(current_user), class: 'fa fa-user' %>
+          <%= menu_item " "+current_user.store_name, edit_user_path(current_user), class: 'fa fa-shopping-bag' %>
           <%= menu_item " Sair", sign_out_path, method: "delete", class: 'fa fa-sign-out' %>
         <% else %>
           <% menu_item "Entrar", root_path, class: 'fa fa-sign-in' %>
