@@ -2,6 +2,7 @@
     <%= menu_group pull: :left  do %>
         <% if logged_in? %>
         <%= menu_item " Produtos", products_path, class: 'fa fa-suitcase' %>
+        <%= menu_item " Clientes", customers_path, class: 'fa fa-id-card' %>
         <% end %>
      <% end %>
     <%= menu_group pull: :right  do %>

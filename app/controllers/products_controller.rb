@@ -2,15 +2,11 @@ class ProductsController < ApplicationController
   before_action :authorize
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
-  # GET /products
-  # GET /products.json
   def index
     @name_search = params[:name]
     @products = Product.where(user_id: current_user.id).where("name ilike ?", "%#{@name_search}%")
   end
 
-  # GET /products/1
-  # GET /products/1.json
   def show
     @product = Product.find(params[:id])
     unless current_user.id == @product.user_id
@@ -18,7 +14,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/new
   def new
     @product = Product.new
   end
@@ -33,8 +28,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # POST /products
-  # POST /products.json
   def create
     @product = Product.new(product_params)
 
@@ -54,12 +47,10 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to @product, notice: 'Produto atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -68,8 +59,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product = Product.find(params[:id])
     unless current_user.id == @product.user_id
@@ -77,7 +66,7 @@ class ProductsController < ApplicationController
     end
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Produto deletado com sucesso.' }
       format.json { head :no_content }
     end
   end

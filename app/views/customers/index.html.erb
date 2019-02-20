@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-9">
+        <% button_to "Novo Cliente", new_customer_path, :method => "get", class: "btn btn-default btn-xs" %>
+        <% link_to 'Novo Cliente', new_customer_path %>
+        <%= link_to " Novo cliente", new_customer_path, :method => "get", class: " fa fa-plus-circle btn btn-default btn-xs"%> 
+      </div>
+
+      <div align="right" class="col-md-3">
+        <%= form_tag customers_path, method: :get do  %>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3"><i class="fa fa-search label-tema" aria-hidden="true"></i></span>
+              <%= text_field_tag :name, @nome_buscar, class: "form-control", placeholder: "buscar clientes ... " %>
+              <% button_to "Buscar", nil, class: "fa fa-search btn btn-defaut btn-xs" %>
+            </div>            
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <% @customers.each do |customer| %>
+  <div class="col-md-3">
+    <ul class="small list-group ">
+      <strong><% link_to customer.name, customer, class: 'list-group-item', title: 'ver cliente', align: 'center' %></strong>
+      <li class="list-group-item list-group-item-info" align="center">
+        <strong><%= customer.name %></strong>
+      </li>
+      <li class="list-group-item">
+        <i class="fa fa-book label-tema label-tema" aria-hidden="true"></i> Em construção<br>
+      </li>
+      <li class="list-group-item">
+        <% link_to ' visualizar', customer, class: 'btn btn-default btn-xs fa fa-eye', title: 'ver cliente' %>
+        <button type="button" class="btn btn-default btn-xs fa fa-eye" data-toggle="modal" title="Visualizar cliente" data-target= <%= "#" + customer.id.to_s %> > visualizar</button>
+        <%= link_to ' editar', edit_customer_path(customer), class: 'btn btn-default btn-xs fa fa-pencil-square-o', title: 'editar cliente' %>
+      </li>
+    </ul>
+  </div>
+  <!-- Modal ver cliente -->
+  <div id=<%= customer.id.to_s %> class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 align="center" class="label-tema modal-title"><i class="fa fa-eye" aria-hidden="true"></i><%= " "+ customer.name %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p><strong>Nome: </strong><%= customer.name %></p>
+              <p><strong>Contato: </strong><%= customer.contact %></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>  
+</div>
